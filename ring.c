@@ -127,7 +127,7 @@ void ring_read(struct packet_ring *ring, int write_fd, int to_ipv6) {
     //CHECKSUM_UNNECESSARY is defined to be 1.
     //Kernel only checks for CHECKSUM_UNNECESSARY (TP_CSUM_UNNECESSARY) bit while processing a
     //packet, so its ok to pass only this bit rather than the full ip_summed field.
-    if ((tp->tp_status & TP_STATUS_CSUMNOTREADY) || (tp->tp_status & TP_STATUS_CSUM_UNNECESSARY)) {
+    if ((tp->tp_status & TP_STATUS_CSUMNOTREADY) || (tp->tp_status & TP_STATUS_CSUMUNNECESSARY)) {
       val = TP_CSUM_UNNECESSARY;
     }
     uint8_t *packet = ((uint8_t *) tp) + tp->tp_net;
